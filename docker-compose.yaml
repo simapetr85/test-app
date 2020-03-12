@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  product:
+    build: ./microservices/product
+    ports:
+      - "8080:8080"
+  postgresql:
+    build: ./db/PostgreSQL
+    environment:
+      - "POSTGRES_USER=docker"
+      - "POSTGRES_PASSWORD=docker"
+      - "POSTGRES_DB=docker"
+
+  
