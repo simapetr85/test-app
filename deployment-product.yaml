@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: product-sc
+type: Opaque
+data:
+  monster: ZHJhZ29u
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: product-cm
+data:
+  application.properties: |
+    name=text from config map
+  test.properties: |
+    name=text from config map
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-deployment
+  labels:
+    app: product
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product
+  template:
+    metadata:
+      labels:
+        app: product
+    spec:
+      containers:
+        - name: product
+          image: pet4a/product:v1
+          env:
+            - name: monster
+              valueFrom:
+                secretKeyRef:
+                  name: product-sc
+                  key: monster
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: product-config
+              mountPath: /app/application.properties
+              subPath: application.properties
+      volumes:
+        - name: product-config
+          configMap:
+            name: product-cm
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-service
+spec:
+  selector:
+    app: product
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

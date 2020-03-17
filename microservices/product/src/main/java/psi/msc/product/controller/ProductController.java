@@ -1,6 +1,8 @@
 package psi.msc.product.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,14 +15,20 @@ import java.util.Random;
 @RequestMapping("/product")
 public class ProductController {
 
+    @Autowired
+    Environment env;
+
     @Value("${name}")
     private String nameFromProperties;
 
-    @Value("${test:#{systemProperties['java.class.version']}}")
+    @Value("#{environment.monster}")
     private String descriptionFromSystemProperties;
 
     @GetMapping("/{id}")
     public Product get(@PathVariable String id) {
+
+
+
         Product product = new Product();
         product.setId(id);
         product.setName(nameFromProperties);

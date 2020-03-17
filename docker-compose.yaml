@@ -5,6 +5,19 @@ services:
     build: ./microservices/product
     ports:
       - "8080:8080"
+    environment:
+      - monster=energy
+
+  transaction:
+    build: ./microservices/transaction
+    ports:
+      - "8081:8080"
+
+  user:
+    build: ./microservices/user
+    ports:
+      - "8082:8080"
+
   postgresql:
     build: ./db/PostgreSQL
     environment:
