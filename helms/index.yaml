@@ -1,0 +1,33 @@
+apiVersion: v1
+entries:
+  product:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2020-03-17T09:57:07.4571576+01:00"
+    description: A Helm chart for Kubernetes
+    digest: 7c6bf729e6d3ca8431a37b9634d3f67bd153e8de20ac846d0a3b2fdd97eb73d0
+    name: product
+    urls:
+    - product-0.1.0.tgz
+    version: 0.1.0
+  transaction:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2020-03-17T09:57:07.4581572+01:00"
+    description: A Helm chart for Kubernetes
+    digest: 31c31dda6141d4ec23ef1ce09f9cb009ad7529f5219fdcd5663aae93dbd89003
+    name: transaction
+    urls:
+    - transaction-0.1.0.tgz
+    version: 0.1.0
+  user:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2020-03-17T09:57:07.4581572+01:00"
+    description: A Helm chart for Kubernetes
+    digest: df49218b495fea71b206969b16354e37dd6c5f343f0fec35c3d130f7e6691e97
+    name: user
+    urls:
+    - user-0.1.0.tgz
+    version: 0.1.0
+generated: "2020-03-17T09:57:07.4561603+01:00"
